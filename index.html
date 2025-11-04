@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chelse Gonsalves — Personal Site</title>
+    <meta name="description" content="Portfolio and personal site of Chelse Gonsalves — editing, coding, art & craft, throwball, movies and more." />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+         :root {
+            --bg: #ee9ae3ff;
+            --card: #0b1220;
+            --accent: #c53f77ff;
+            --muted: #94a3b8;
+            --glass: rgba(111, 47, 151, 0.04);
+            --radius: 14px;
+            --max-width: 1100px;
+            --gap: 20px;
+        }
+        
+        * {
+            box-sizing: border-box
+        }
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, #77197aff 0%, #982491ff 100%);
+            color: #e6eef6
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+        /* layout */
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 30px auto;
+            padding: 24px
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+        
+        .logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), #a92f70ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: rgba(94, 22, 103, 1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5)
+        }
+        
+        nav {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+        
+        nav a {
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: var(--muted)
+        }
+        
+        nav a.active {
+            background: var(--glass);
+            color: var(--accent);
+            box-shadow: inset 0 -1px 0 rgba(135, 54, 102, 0.02)
+        }
+        /* hero */
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+            align-items: center;
+            margin-top: 28px
+        }
+        
+        .card {
+            background: linear-gradient(180deg, rgba(147, 19, 100, 0.02), rgba(205, 58, 137, 0.01));
+            border-radius: var(--radius);
+            padding: 22px;
+            box-shadow: 0 8px 30px rgba(88, 15, 86, 0.6)
+        }
+        
+        .hero-title {
+            font-size: clamp(22px, 3.5vw, 36px);
+            line-height: 1.05;
+            margin: 0
+        }
+        
+        .hero-sub {
+            color: var(--muted);
+            margin-top: 8px
+        }
+        
+        .profile-pic {
+            width: 100%;
+            height: 320px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #611b72ff;
+            display: block
+        }
+        /* sections */
+        
+        section {
+            margin-top: 22px
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px
+        }
+        /* about */
+        
+        .about p {
+            color: var(--muted);
+            line-height: 1.6
+        }
+        /* gallery */
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block
+        }
+        /* project */
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px
+        }
+        
+        .project-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px
+        }
+        
+        .upload-btn {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: var(--accent);
+            color: rgba(199, 58, 175, 1);
+            font-weight: 700;
+            cursor: pointer
+        }
+        /* contact */
+        
+        form {
+            display: grid;
+            gap: 12px
+        }
+        
+        input,
+        textarea {
+            background: transparent;
+            border: 1px solid rgba(103, 36, 97, 0.06);
+            padding: 12px;
+            border-radius: 8px;
+            color: inherit;
+            outline: none
+        }
+        
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(230, 238, 246, 0.4)
+        }
+        
+        .btn {
+            padding: 12px 16px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--accent), #9a3ca7ff);
+            border: none;
+            color: rgba(164, 60, 180, 1);
+            font-weight: 700;
+            cursor: pointer
+        }
+        
+        footer {
+            margin-top: 30px;
+            color: var(--muted);
+            text-align: center
+        }
+        /* modal */
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(143, 20, 145, 0.7);
+            z-index: 60;
+            padding: 20px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .2s
+        }
+        
+        .modal.open {
+            visibility: visible;
+            opacity: 1
+        }
+        
+        .modal .viewer {
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            background: #2e0f2cff;
+            border-radius: 12px;
+            padding: 16px
+        }
+        
+        .viewer img {
+            width: 100%;
+            height: 60vh;
+            object-fit: contain;
+            border-radius: 8px
+        }
+        /* responsive */
+        
+        @media (max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .gallery {
+                grid-template-columns: repeat(2, 1fr)
+            }
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+        
+        @media (max-width:520px) {
+            nav {
+                display: none
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start
+            }
+            .logo {
+                width: 48px;
+                height: 48px
+            }
+            .gallery img {
+                height: 120px
+            }
+            .profile-pic {
+                height: 220px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo">CG</div>
+                <div>
+                    <div style="font-weight:700">Chelse Gonsalves</div>
+                    <div style="font-size:12px;color:var(--muted)">Editing • Coding • Art & Craft</div>
+                </div>
+            </div>
+
+            <nav id="main-nav" aria-label="Main navigation">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </header>
+
+        <!-- HOME -->
+        <main id="home">
+            <div class="hero">
+                <div class="card">
+                    <h1 class="hero-title">HELLO &amp; WELCOME<br><span style="color:var(--accent)">I am Chelse Gonsalves</span></h1>
+                    <p class="hero-sub">A creative technologist who loves editing, coding and exploring new computer languages. Welcome to my personal corner of the web.</p>
+
+                    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+                        <a href="#projects" class="upload-btn">See My Photography</a>
+                        <a href="#gallery" class="upload-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted);">View Gallery</a>
+                    </div>
+
+                    <div style="margin-top:20px;color:var(--muted);font-size:14px">
+                        <strong>Quick facts:</strong>
+                        <ul style="margin:8px 0 0 18px;padding:0;color:var(--muted)">
+                            <li>Interests: Editing, Coding, Learning Computer Languages</li>
+                            <li>Hobbies: Throwball, Cards, UNO, Carrom</li>
+                            <li>Other: Movies & Webseries, Art & Craft</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Profile card -->
+                <aside class="card">
+                    <!-- Replace 'profile.jpg' with your own picture file name, or change the src to an absolute URL. -->
+                    <img src="mee.11.jpg" alt="Chelse Gonsalves — profile" class="profile-pic" id="profilePic" onerror="this.src='chelse/mee.11.jpg'">
+                    <div style="margin-top:12px;color:var(--muted)">
+                        <div style="font-weight:700">Chelse Gonsalves</div>
+                        <div style="font-size:13px;margin-top:6px">Editing • Coding • Artist • Photographer</div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- ABOUT -->
+            <section id="about" class="about card">
+                <h2>About Me</h2>
+                <p>I’m someone who enjoys exploring creativity and technology hand in hand. I have a strong interest in editing and coding, and I love learning new computer languages to enhance my skills and knowledge in the digital world. Beyond technology,
+                    I’m passionate about playing throwball and indoor games like cards, UNO, and carrom, which keep me active and connected with friends. In my free time, I love watching movies and web series that inspire and entertain me. I also have
+                    a deep love for art and craft, where I get to express my creativity and bring imaginative ideas to life.</p>
+
+                <div class="grid-2" style="margin-top:12px">
+                    <div class="card">
+                        <h3>Skills & Tools</h3>
+                        <ul style="color:var(--muted);margin:8px 0 0 18px">
+                            <li>Video & Photo Editing (Premiere, Lightroom, etc.)</li>
+                            <li>Web Development: HTML, CSS, JavaScript</li>
+                            <li>Learning: New programming & scripting languages</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Hobbies & Achievements</h3>
+                        <ul style="color:var(--muted);margin:8px 0 0 18px">
+                            <li>Throwball team player</li>
+                            <li>Local art & craft exhibits</li>
+                            <li>Active creator of short web edits & montages</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GALLERY -->
+            <section id="gallery" class="card">
+                <h2>Gallery / Portfolio</h2>
+                <p style="color:var(--muted)">A small selection of images that show my love for art and games. Click any image to view larger.</p>
+                <div class="gallery" style="margin-top:12px" id="galleryGrid">
+                    <!-- 4 images - replace with your images or URLs -->
+                    <img src="mee.01.jpg" alt="art and nature 1" onerror="this.src='chelse/mee.02.jpg'">
+                    <img src="mee.02.jpg" alt="art and nature 2" onerror="this.src='chelse/mee.04.jpg'">
+                    <img src="mee.03.jpg" alt="art and nature 3" onerror="this.src='chelse/mee.03.jpg'">
+                    <img src="mee.04.jpg" alt="art and nature 4" onerror="this.src='chelse/mee.01.jpg'">
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section id="projects" class="card">
+                <h2>Projects — My Best Photographs </h2>
+                <p style="color:var(--muted)">A small selection where I present my photography skills. Click any image to view larger.</p>
+                <div class="project" style="margin-top:12px" id="projectGrid">
+                    <!-- 4 images - replace with your images or URLs -->
+                    <img src="mee.09.jpg" alt="my photographs 1" onerror="this.src='chelse/mee.09.jpg'">
+                    <img src="mee.6.jpg" alt="my photographs 2" onerror="this.src='chelse/mee.6.jpg'">
+                    <img src="mee.07.jpg" alt="my photographs 3" onerror="this.src='chelse/mee.07.jpg'">
+                    <img src="mee.08.jpg" alt="my photographs 4" onerror="this.src='chelse/mee.08.jpg'">
+                    <img src="mee.10.jpg" alt="my photographs 4" onerror="this.src='chelse/mee.10.jpg'">
+                </div>
+            </section>
+
+
+
+            <!-- CONTACT -->
+            <section id="contact" class="card">
+                <h2>Contact Me</h2>
+                <p style="color:var(--muted)">I'd love to hear from you. Fill out this form to get in touch.</p>
+                <form id="contactForm" novalidate>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <input type="text" id="contactInfo" name="contactInfo" placeholder="Email or phone number" required>
+                    <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+                    <div style="display:flex;gap:10px;align-items:center">
+                        <button type="submit" class="btn">Send Message</button>
+                        <div id="formMsg" style="color:var(--muted)"></div>
+                    </div>
+                </form>
+            </section>
+
+        </main>
+
+        <footer>
+            © <span id="year"></span> Chelse Gonsalves • Built with ❤ — HTML • CSS • JavaScript
+        </footer>
+    </div>
+
+    <!-- Image Modal Viewer -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="viewer">
+            <button id="closeModal" style="float:right;background:transparent;border:none;color:var(--muted);font-weight:700;cursor:pointer">Close</button>
+            <img id="modalImg" src="" alt="Expanded image">
+        </div>
+    </div>
+
+    <script>
+        // helper: smooth scroll & active nav
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+                link.classList.add('active');
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            })
+        })
+
+        // Update year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Gallery modal
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImg');
+        document.getElementById('galleryGrid').addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG') {
+                modalImg.src = e.target.src;
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+            }
+        });
+        document.getElementById('closeModal').addEventListener('click', () => {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // PROJECTS - client-side preview of uploaded images
+        const projectUpload = document.getElementById('projectUpload');
+        const projectGrid = document.getElementById('projectGrid');
+        const clearProjects = document.getElementById('clearProjects');
+
+        projectUpload.addEventListener('change', (evt) => {
+            const files = Array.from(evt.target.files).slice(0, 12); // limit
+            files.forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = file.name;
+                    img.addEventListener('click', () => {
+                        modalImg.src = img.src;
+                        modal.classList.add('open');
+                        modal.setAttribute('aria-hidden', 'false');
+                    });
+                    projectGrid.prepend(img);
+                };
+                reader.readAsDataURL(file);
+            });
+            // reset input so same files can be reselected
+            projectUpload.value = '';
+        });
+        clearProjects.addEventListener('click', () => {
+            projectGrid.innerHTML = '';
+        });
+
+        // Contact form validation
+        const form = document.getElementById('contactForm');
+        const formMsg = document.getElementById('formMsg');
+
+        function validContact(input) {
+            // very permissive: check if it's email-like or phone-like
+            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRe = /^[0-9+\-()\s]{7,20}$/;
+            return emailRe.test(input) || phoneRe.test(input);
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const contact = document.getElementById('contactInfo').value.trim();
+            const message = document.getElementById('message').value.trim();
+            formMsg.style.color = 'var(--muted)';
+
+            if (!name || !contact || !message) {
+                formMsg.textContent = 'Please fill in all fields.';
+                return;
+            }
+            if (!validContact(contact)) {
+                formMsg.textContent = 'Please enter a valid email address or phone number.';
+                return;
+            }
+
+            // For demo: store the message locally and show success.
+            // In a real site you'd POST this to a server or use an email API.
+            const submissions = JSON.parse(localStorage.getItem('cg_submissions') || '[]');
+            submissions.push({
+                name,
+                contact,
+                message,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('cg_submissions', JSON.stringify(submissions));
+
+            formMsg.style.color = '#34d399';
+            formMsg.textContent = 'Thanks! Your message has been saved locally.';
+            form.reset();
+            setTimeout(() => {
+                formMsg.textContent = '';
+            }, 5000);
+        });
+
+        // Scroll spy - highlight nav based on scroll position
+        const sections = Array.from(document.querySelectorAll('main > section, main > .hero'));
+
+        function onScrollSpy() {
+            const top = window.scrollY + 120; // offset
+            let current = sections[0];
+            for (const sec of sections) {
+                if (sec.offsetTop <= top) current = sec;
+            }
+            const id = current.id || 'home';
+            document.querySelectorAll('.nav-link').forEach(n => {
+                n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+            });
+        }
+        window.addEventListener('scroll', onScrollSpy);
+        onScrollSpy();
+
+        // Accessibility: allow keyboard closing modal by Escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // Small note in console for developers
+        console.log('Chelse site script loaded — replace profile.jpg, gallery1.jpg..4.jpg with your images.');
+    </script>
+</body>
+
+</html>
